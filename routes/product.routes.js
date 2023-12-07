@@ -15,7 +15,7 @@ router.post("/product", (req, res, next) => {
       .catch((err) => res.json(err));
   });
 // get all products
-  router.get("/Product", (req, res, next) => {
+  router.get("/product", (req, res, next) => {
     Product.find()
       .then((allProduct) => res.json(allProduct))
       .catch((err) => res.json(err));
