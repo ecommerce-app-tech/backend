@@ -17,9 +17,14 @@ router.post("/product", (req, res, next) => {
 // get all products
   router.get("/product", (req, res, next) => {
     Product.find()
-      .then((allProduct) => res.json(allProduct))
-      .catch((err) => res.json(err));
-  });
+  
+    .then((product) => {
+      res.status(200).json(product)
+    })
+    .catch((error) => {
+      next(error)
+    })
+})
 
   // get product by ID
 

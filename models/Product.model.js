@@ -15,9 +15,10 @@ const productSchema = new Schema(
         trim: true,
         required: true,
     },
-    category:{
-        type: Schema.Types.ObjectId, ref: "Category"
-    },
+    category: {
+      type: Schema.Types.ObjectId,
+         ref: 'Category'
+   },
     description: {
       type: String,
       required: true,
