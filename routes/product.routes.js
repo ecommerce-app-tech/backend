@@ -17,7 +17,7 @@ router.post("/product", (req, res, next) => {
 router.get("/product", (req, res, next) => {
   console.log("Here");
   Product.find()
-    .populate("category")
+   
     .then((product) => {
       console.log(product);
       res.status(200).json(product);

@@ -13,7 +13,7 @@ const app = express();
 app.use(
     cors({
       // Add the URLs of allowed origins to this array
-      origin: ['https://ecommerce-tech-app.netlify.app']
+      origin: ['https://ecommerce-tech-app.netlify.app','http://localhost:5173']
     })
   );
 // ℹ️ This function is getting exported from the config folder. It runs most pieces of middleware
