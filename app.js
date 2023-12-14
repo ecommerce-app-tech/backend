@@ -13,7 +13,7 @@ const app = express();
 app.use(
     cors({
       // Add the URLs of allowed origins to this array
-      origin: ['http://localhost:5173']
+      origin: ['https://ecom-api.adaptable.app']
     })
   );
 // ℹ️ This function is getting exported from the config folder. It runs most pieces of middleware

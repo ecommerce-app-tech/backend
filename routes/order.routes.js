@@ -6,17 +6,17 @@ const Order = require("../models/Order.model")
 // creat order
 
 router.post("/order", (req, res, next) => {
-    const { user,shippingAddress, country,city,postalCode } = req.body;
+    const { shippingAddress, country,city,state,postalCode ,price} = req.body;
  
-    Order.create({ user,shippingAddress, country,city,postalCode })
-
+    Order.create({ shippingAddress, country,city,state,postalCode,price })
+      
       .then((response) => res.json(response))
       .catch((err) => res.json(err));
   });
 // get All orders
 router.get("/order", (req, res, next) => {
     Order.find()
-      
+    .populate("user")
       .then((allOrders) => res.json(allOrders))
       .catch((err) => res.json(err));
   });
@@ -29,7 +29,7 @@ router.get("/order", (req, res, next) => {
       return;
     }
     Order.findById(orderId)
-    .populate("user")
+   
     .populate("product")
       .then((order) => res.status(200).json(order))
       .catch((error) => res.json(error));
