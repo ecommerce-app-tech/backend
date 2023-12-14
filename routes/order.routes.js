@@ -6,13 +6,13 @@ const Order = require("../models/Order.model")
 // creat order
 
 router.post("/order", (req, res, next) => {
-    const { shippingAddress, country,city,state,postalCode ,price} = req.body;
- 
-    Order.create({ shippingAddress, country,city,state,postalCode,price })
-      
+    const { shippingAddress, country,city,state,postalCode } = req.body;
+
+    Order.create({ shippingAddress, country, city, state, postalCode })
       .then((response) => res.json(response))
       .catch((err) => res.json(err));
   });
+  
 // get All orders
 router.get("/order", (req, res, next) => {
     Order.find()
@@ -20,6 +20,7 @@ router.get("/order", (req, res, next) => {
       .then((allOrders) => res.json(allOrders))
       .catch((err) => res.json(err));
   });
+
    //get order by Id
    router.get("/order/:orderId", (req, res, next) => {
     const { orderId } = req.params;
