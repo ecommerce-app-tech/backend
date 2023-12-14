@@ -15,7 +15,7 @@ router.post("/product", (req, res, next) => {
 
 // get all products
 router.get("/product", (req, res, next) => {
-  console.log("Here");
+
   Product.find()
    
     .then((product) => {

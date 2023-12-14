@@ -6,18 +6,21 @@ const Order = require("../models/Order.model")
 // creat order
 
 router.post("/order", (req, res, next) => {
-    const { shippingAddress, country,city,state,postalCode } = req.body;
+    const { shippingAddress, country,city,state,postalCode,user,product } = req.body;
 
-    Order.create({ shippingAddress, country, city, state, postalCode })
+    Order.create({ shippingAddress, country, city, state, postalCode,user,product })
       .then((response) => res.json(response))
       .catch((err) => res.json(err));
   });
-  
+
 // get All orders
 router.get("/order", (req, res, next) => {
     Order.find()
+    
     .populate("user")
-      .then((allOrders) => res.json(allOrders))
+      .then((allOrders) =>{
+        console.log(allOrders)
+        res.json(allOrders)})
       .catch((err) => res.json(err));
   });
 
@@ -51,23 +54,8 @@ router.get("/order", (req, res, next) => {
     .then((updatedOrder) => res.json(updatedOrder))
     .catch((error) => res.json(error));
   });
-   // delete Order by ID
 
-   router.delete("/order/:orderId", (req, res, next) => {
-    const { orderId } = req.params;
-  
-    if (!mongoose.Types.ObjectId.isValid(orderId)) {
-      res.status(400).json({ message: "Specified id is not valid" });
-      return;
-    }
-  
-    Order.findByIdAndRemove(orderId)
-      .then(() =>
-        res.json({
-          message: `Order with ${orderId} is removed successfully.`,
-        })
-      )
-      .catch((error) => res.json(error));
-  });
+
+   
 
   module.exports = router;
